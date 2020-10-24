@@ -1,0 +1,251 @@
+class Game {
+   field Player player1; 
+   field int direction; 
+   field Plate p1;
+   field Plate p2;
+   field Plate p3;
+   field Plate p4;
+   field Plate p5;
+   field Plate p6;
+   field Plate p7;
+   field Plate p8;
+   field Plate p9;
+   field Plate p10;
+   field int score;
+   
+   constructor Game new() {
+      let player1 = Player.new(240, 230, 20);
+      let direction = 0;
+	  let p1 = Plate.new(90,40,20);
+	  let p2 = Plate.new(470,60,20);
+	  let p3 = Plate.new(130,80,20);
+	  let p4 = Plate.new(350,100,20);
+	  let p5 = Plate.new(190,120,20);
+	  let p6 = Plate.new(400,140,20);
+	  let p7 = Plate.new(430,160,20);
+	  let p8 = Plate.new(200,180,20);
+	  let p9 = Plate.new(450,200,20);
+	  let p10 = Plate.new(110,220,20);
+	  let score = 0;
+	  do Output.printString("Score: 0");
+	  do Screen.drawRectangle(80, 0, 82, 254);
+      return this;
+   }
+
+   method void dispose() {
+      do player1.dispose();
+	  do p1.dispose();
+	  do p2.dispose();
+	  do p3.dispose();
+	  do p4.dispose();
+	  do p5.dispose();
+	  do p6.dispose();
+	  do p7.dispose();
+	  do p8.dispose();
+	  do p9.dispose();
+	  do p10.dispose();
+      do Memory.deAlloc(this);
+      return;
+   }
+
+   method void movePlayer() {
+      if (direction = 1) { do player1.moveUp(); }
+      if (direction = 2) { do player1.moveDown(); }
+      if (direction = 3) { do player1.moveLeft(); }
+      if (direction = 4) { do player1.moveRight(); }
+      do Sys.wait(10); 
+      return;
+   }
+   method void movePlate(){
+	  do p1.move();
+	  do p2.move();
+	  do p3.move();
+	  do p4.move();
+	  do p5.move();
+	  do p6.move();
+	  do p7.move();
+	  do p8.move();
+	  do p9.move();
+	  do p10.move();
+	  do Sys.wait(10);
+	  return;
+   }
+
+   method void run() {
+      var int p1_XLeft, p1_XRight, player_XLeft, player_XRight,p1_YLeft,player_YLeft,p1_YRight,player_YRight;
+	  var int p2_XLeft, p2_XRight,p2_YLeft,p2_YRight;
+	  var int p3_XLeft, p3_XRight,p3_YLeft,p3_YRight;
+	  var int p4_XLeft, p4_XRight,p4_YLeft,p4_YRight;
+	  var int p5_XLeft, p5_XRight,p5_YLeft,p5_YRight;
+	  var int p6_XLeft, p6_XRight,p6_YLeft,p6_YRight;
+	  var int p7_XLeft, p7_XRight,p7_YLeft,p7_YRight;
+	  var int p8_XLeft, p8_XRight,p8_YLeft,p8_YRight;
+	  var int p9_XLeft, p9_XRight,p9_YLeft,p9_YRight;
+	  var int p10_XLeft, p10_XRight,p10_YLeft,p10_YRight;
+      var char key;  
+      var boolean exit;
+	  var boolean gainscore;
+	  let gainscore = true;
+      let exit = false;
+      while (~exit) {
+		 
+         while ((key = 0) & (~exit)) {
+		    
+	        let player_XRight = player1.getXRight();
+	        let player_XLeft = player1.getXLeft();
+			let player_YRight = player1.getYRight();
+			let player_YLeft = player1.getYLeft();
+			
+			let p1_YRight = p1.getYRight();
+			let p1_YLeft = p1.getYLeft();
+			let p1_XRight = p1.getXRight();
+	        let p1_XLeft = p1.getXLeft();
+			
+			let p2_YRight = p2.getYRight();
+			let p2_YLeft = p2.getYLeft();
+			let p2_XRight = p2.getXRight();
+	        let p2_XLeft = p2.getXLeft();
+			
+			let p3_YRight = p3.getYRight();
+			let p3_YLeft = p3.getYLeft();
+			let p3_XRight = p3.getXRight();
+	        let p3_XLeft = p3.getXLeft();
+			
+			let p4_YRight = p4.getYRight();
+			let p4_YLeft = p4.getYLeft();
+			let p4_XRight = p4.getXRight();
+	        let p4_XLeft = p4.getXLeft();
+			
+			let p5_YRight = p5.getYRight();
+			let p5_YLeft = p5.getYLeft();
+			let p5_XRight = p5.getXRight();
+	        let p5_XLeft = p5.getXLeft();
+			
+			let p6_YRight = p6.getYRight();
+			let p6_YLeft = p6.getYLeft();
+			let p6_XRight = p6.getXRight();
+	        let p6_XLeft = p6.getXLeft();
+			
+			let p7_YRight = p7.getYRight();
+			let p7_YLeft = p7.getYLeft();
+			let p7_XRight = p7.getXRight();
+	        let p7_XLeft = p7.getXLeft();
+			
+			let p8_YRight = p8.getYRight();
+			let p8_YLeft = p8.getYLeft();
+			let p8_XRight = p8.getXRight();
+	        let p8_XLeft = p8.getXLeft();
+			
+			let p9_YRight = p9.getYRight();
+			let p9_YLeft = p9.getYLeft();
+			let p9_XRight = p9.getXRight();
+	        let p9_XLeft = p9.getXLeft();
+			
+			let p10_YRight = p10.getYRight();
+			let p10_YLeft = p10.getYLeft();
+			let p10_XRight = p10.getXRight();
+	        let p10_XLeft = p10.getXLeft();
+			
+			let exit = ((((p1_XRight > (player_XLeft)) & (p1_XLeft < (player_XRight))) & ((p1_YLeft > (player_YLeft)) & (p1_YRight < (player_YRight)))) | (((p2_XRight > (player_XLeft)) & (p2_XLeft < (player_XRight))) & ((p2_YLeft > (player_YLeft)) & (p2_YRight < (player_YRight))) | (((p3_XRight > (player_XLeft)) & (p3_XLeft < (player_XRight))) & ((p3_YLeft > (player_YLeft)) & (p3_YRight < (player_YRight))) | (((p4_XRight > (player_XLeft)) & (p4_XLeft < (player_XRight))) & ((p4_YLeft > (player_YLeft)) & (p4_YRight < (player_YRight))) | (((p5_XRight > (player_XLeft)) & (p5_XLeft < (player_XRight))) & ((p5_YLeft > (player_YLeft)) & (p5_YRight < (player_YRight)))) | (((p6_XRight > (player_XLeft)) & (p6_XLeft < (player_XRight))) & ((p6_YLeft > (player_YLeft)) & (p6_YRight < (player_YRight)))) | (((p7_XRight > (player_XLeft)) & (p7_XLeft < (player_XRight))) & ((p7_YLeft > (player_YLeft)) & (p7_YRight < (player_YRight)))) | (((p8_XRight > (player_XLeft)) & (p8_XLeft < (player_XRight))) & ((p8_YLeft > (player_YLeft)) & (p8_YRight < (player_YRight)))) | (((p9_XRight > (player_XLeft)) & (p9_XLeft < (player_XRight))) & ((p9_YLeft > (player_YLeft)) & (p9_YRight < (player_YRight)))) | (((p10_XRight > (player_XLeft)) & (p10_XLeft < (player_XRight))) & ((p10_YLeft > (player_YLeft)) & (p10_YRight < (player_YRight))))))));
+			do movePlate();
+            let key = Keyboard.keyPressed();
+			if ((player_YRight < 20) & (gainscore)){
+				let gainscore = false;
+				let score = score + 1;
+				do Output.moveCursor(0,8);
+				do Output.printInt(score);
+			}
+			if ((player_YLeft > 230) & (~gainscore)){
+				let gainscore = true;
+				let score = score + 1;
+				do Output.moveCursor(0,8);
+				do Output.printInt(score);
+			}
+         }
+         if (key = 81)  { let exit = true; }
+		 if (key = 131) { let direction = 1; } 
+		 if (key = 133) { let direction = 2; } 		 
+         if (key = 130) { let direction = 3; }   
+         if (key = 132) { let direction = 4; }  
+
+         while ((~(key = 0))& (~exit)) {
+
+	        let player_XRight = player1.getXRight();
+	        let player_XLeft = player1.getXLeft();
+			let player_YRight = player1.getYRight();
+			let player_YLeft = player1.getYLeft();
+			
+			let p1_YRight = p1.getYRight();
+			let p1_YLeft = p1.getYLeft();
+			let p1_XRight = p1.getXRight();
+	        let p1_XLeft = p1.getXLeft();
+			
+			let p2_YRight = p2.getYRight();
+			let p2_YLeft = p2.getYLeft();
+			let p2_XRight = p2.getXRight();
+	        let p2_XLeft = p2.getXLeft();
+			
+			let p3_YRight = p3.getYRight();
+			let p3_YLeft = p3.getYLeft();
+			let p3_XRight = p3.getXRight();
+	        let p3_XLeft = p3.getXLeft();
+			
+			let p4_YRight = p4.getYRight();
+			let p4_YLeft = p4.getYLeft();
+			let p4_XRight = p4.getXRight();
+	        let p4_XLeft = p4.getXLeft();
+			
+			let p5_YRight = p5.getYRight();
+			let p5_YLeft = p5.getYLeft();
+			let p5_XRight = p5.getXRight();
+	        let p5_XLeft = p5.getXLeft();
+			
+			let p6_YRight = p6.getYRight();
+			let p6_YLeft = p6.getYLeft();
+			let p6_XRight = p6.getXRight();
+	        let p6_XLeft = p6.getXLeft();
+			
+			let p7_YRight = p7.getYRight();
+			let p7_YLeft = p7.getYLeft();
+			let p7_XRight = p7.getXRight();
+	        let p7_XLeft = p7.getXLeft();
+			
+			let p8_YRight = p8.getYRight();
+			let p8_YLeft = p8.getYLeft();
+			let p8_XRight = p8.getXRight();
+	        let p8_XLeft = p8.getXLeft();
+			
+			let p9_YRight = p9.getYRight();
+			let p9_YLeft = p9.getYLeft();
+			let p9_XRight = p9.getXRight();
+	        let p9_XLeft = p9.getXLeft();
+			
+			let p10_YRight = p10.getYRight();
+			let p10_YLeft = p10.getYLeft();
+			let p10_XRight = p10.getXRight();
+	        let p10_XLeft = p10.getXLeft();
+			
+	        let exit = ((((p1_XRight > (player_XLeft)) & (p1_XLeft < (player_XRight))) & ((p1_YLeft > (player_YLeft)) & (p1_YRight < (player_YRight)))) | (((p2_XRight > (player_XLeft)) & (p2_XLeft < (player_XRight))) & ((p2_YLeft > (player_YLeft)) & (p2_YRight < (player_YRight))) | (((p3_XRight > (player_XLeft)) & (p3_XLeft < (player_XRight))) & ((p3_YLeft > (player_YLeft)) & (p3_YRight < (player_YRight))) | (((p4_XRight > (player_XLeft)) & (p4_XLeft < (player_XRight))) & ((p4_YLeft > (player_YLeft)) & (p4_YRight < (player_YRight))) | (((p5_XRight > (player_XLeft)) & (p5_XLeft < (player_XRight))) & ((p5_YLeft > (player_YLeft)) & (p5_YRight < (player_YRight)))) | (((p6_XRight > (player_XLeft)) & (p6_XLeft < (player_XRight))) & ((p6_YLeft > (player_YLeft)) & (p6_YRight < (player_YRight)))) | (((p7_XRight > (player_XLeft)) & (p7_XLeft < (player_XRight))) & ((p7_YLeft > (player_YLeft)) & (p7_YRight < (player_YRight)))) | (((p8_XRight > (player_XLeft)) & (p8_XLeft < (player_XRight))) & ((p8_YLeft > (player_YLeft)) & (p8_YRight < (player_YRight)))) | (((p9_XRight > (player_XLeft)) & (p9_XLeft < (player_XRight))) & ((p9_YLeft > (player_YLeft)) & (p9_YRight < (player_YRight)))) | (((p10_XRight > (player_XLeft)) & (p10_XLeft < (player_XRight))) & ((p10_YLeft > (player_YLeft)) & (p10_YRight < (player_YRight))))))));
+            let key = Keyboard.keyPressed();
+            do movePlayer();
+			do movePlate();
+			if ((player_YLeft < 10) & (gainscore)){
+				let gainscore = false;
+				let score = score + 1;
+				do Output.moveCursor(0,7);
+				do Output.printInt(score);
+			}
+			if ((player_YRight > 240) & (~gainscore)){
+				let gainscore = true;
+				let score = score + 1;
+				do Output.moveCursor(0,7);
+				do Output.printInt(score);
+			}
+         }
+     } 
+     return;
+   }
+}
+
+
+
