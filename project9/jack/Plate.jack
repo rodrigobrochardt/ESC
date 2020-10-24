@@ -1,0 +1,65 @@
+class Plate {
+	   field int x, y;
+	   field int speed;
+	   field boolean half;
+    constructor Plate new(int Ax, int Ay, int speeed) {
+      let x = Ax;
+      let y = Ay;
+	  let half = true;
+      let speed = speeed;
+      do draw();
+      return this;
+   }
+    method void dispose() {
+      do Memory.deAlloc(this);
+      return;
+   }
+
+   method void draw() {
+      do Screen.setColor(true);
+      do Screen.drawRectangle(x, y, x + 40, y + 5);
+      return;
+   }
+   method void erase() {
+      do Screen.setColor(false);
+      do Screen.drawRectangle(x, y, x + 40, y + 5);
+      return;
+   }
+   method int getXLeft() {
+      return x;
+    }
+
+   method int getXRight() {
+      return x+40;
+    }
+   method int getYLeft() {
+        return y;
+    }
+
+   method int getYRight() {
+        return y+5;
+    }
+   method void move() {
+      if ((x > 85) & (half)) {
+         do Screen.setColor(false);
+         do Screen.drawRectangle((x + 40) - 1, y, x + 40, y + 5);
+         let x = x - 2;
+         do Screen.setColor(true);
+         do Screen.drawRectangle(x, y, x + 1, y + 5);
+      }
+	  if (((x + 40) < 490) & (~half)) {
+         do Screen.setColor(false);
+         do Screen.drawRectangle(x, y, x + 1, y + 5);
+         let x = x + 2;
+         do Screen.setColor(true);
+         do Screen.drawRectangle((x + 40) - 1, y, x + 40, y + 5);
+      }
+	  if (x < 85){
+	     let half = false;
+	  }
+	  if ((x+40) = 490){
+		 let half = true;
+	  }
+      return;
+   }
+}
